@@ -64,7 +64,6 @@ RF_insula <- randomForest( x=otu_table_scaled_insula[,1:(ncol(otu_table_scaled_i
                            y=otu_table_scaled_insula$insula , ntree=501, importance=TRUE, proximities=TRUE )  
 RF_insula #%Var 9.25
 
-saveRDS(file="RF_insula.rda", RF_insula)
 
 #Error plot for # of trees
 insula_tress_plot<-plot(RF_insula)
@@ -82,12 +81,10 @@ insula.r.squared.dist
 RF_insula_sig <- rf.significance( x=RF_insula ,  xdata=otu_table_scaled_insula[,1:(ncol(otu_table_scaled_insula)-1)] , nperm=1000 , ntree=501 )  
 RF_insula_sig #Model is signigicant at p=0.005
 
-saveRDS(file="RF_insula_sig.rda", RF_insula_sig)
 
 RF_insula_loocv <- train( otu_table_scaled_insula[,1:(ncol(otu_table_scaled_insula)-1)] , y=otu_table_scaled_insula[, ncol(otu_table_scaled_insula)] , method="rf", ntree=501 , tuneGrid=data.frame( mtry=104 ) , trControl=fit_control )
 RF_insula_loocv
 
-saveRDS(file="RF_insula_loocv.rda", RF_insula_loocv)
 
 #Identifying important features
 
@@ -111,7 +108,6 @@ set.seed(123)
 RF_amygdala <- randomForest( x=otu_table_scaled_amygdala[,1:(ncol(otu_table_scaled_amygdala)-1)] , 
                              y=otu_table_scaled_amygdala$amygdala , ntree=501, importance=TRUE, proximities=TRUE )  
 RF_amygdala #%Var 0.52
-saveRDS(file="RF_amygdala.rda", RF_amygdala)
 
 #Error plot for # of trees
 amygdala_tress_plot<-plot(RF_amygdala)
@@ -127,13 +123,11 @@ amygdala.r.squared.dist
 #Permutation test (1000) (TAKES A WHILE TO RUN)
 RF_amygdala_sig <- rf.significance( x=RF_amygdala ,  xdata=otu_table_scaled_amygdala[,1:(ncol(otu_table_scaled_amygdala)-1)] , nperm=1000 , ntree=501 )  
 RF_amygdala_sig #Model is NOT significant at p=0.074 
-saveRDS(file="RF_amygdala_sig.rda", RF_amygdala_sig)
 
 #Accuracy Estimated by Cross-validation
 fit_control <- trainControl( method = "LOOCV" )    
 RF_amygdala_loocv <- train( otu_table_scaled_amygdala[,1:(ncol(otu_table_scaled_amygdala)-1)] , y=otu_table_scaled_amygdala[, ncol(otu_table_scaled_amygdala)] , method="rf", ntree=501 , tuneGrid=data.frame( mtry=104 ) , trControl=fit_control )
 RF_amygdala_loocv
-saveRDS(file="RF_amygdala_loocv.rda", RF_amygdala_loocv)
 
 #Identifying important features
 
@@ -155,7 +149,6 @@ set.seed(123)
 RF_hippocampus <- randomForest( x=otu_table_scaled_hippocampus[,1:(ncol(otu_table_scaled_hippocampus)-1)] , 
                                 y=otu_table_scaled_hippocampus$hippocampus , ntree=501, importance=TRUE, proximities=TRUE )  
 RF_hippocampus #%V -12.11 
-saveRDS(file="RF_hippocampus.rda",RF_hippocampus)
 
 #Error plot for # of trees
 hippocampus_tress_plot<-plot(RF_hippocampus)
@@ -172,7 +165,6 @@ hippocampus.r.squared.dist
 #Permutation test (1000) (TAKES A WHILE TO RUN)
 RF_hippocampus_sig <- rf.significance( x=RF_hippocampus ,  xdata=otu_table_scaled_hippocampus[,1:(ncol(otu_table_scaled_hippocampus)-1)] , nperm=1000 , ntree=501 )  
 RF_hippocampus_sig #not signifiant at p = 0.539 
-saveRDS(file="RF_hippocampus_sig.rda", RF_hippocampus_sig)
 
 #ACC model
 
@@ -183,7 +175,7 @@ set.seed(123)
 RF_acc <- randomForest( x=otu_table_scaled_acc[,1:(ncol(otu_table_scaled_acc)-1)] , 
                         y=otu_table_scaled_acc$acc , ntree=501, importance=TRUE, proximities=TRUE )  
 RF_acc #%Var -4.05
-saveRDS(file="RF_acc.rda", RF_acc)
+
 #Error plot for # of trees
 acc_tress_plot<-plot(RF_acc)
 acc_tress_plot
@@ -198,7 +190,6 @@ acc.r.squared.dist #R2 dont go >0
 #Permutation test (1000) (TAKES A WHILE TO RUN)
 RF_acc_sig <- rf.significance( x=RF_acc ,  xdata=otu_table_scaled_acc[,1:(ncol(otu_table_scaled_acc)-1)] , nperm=1000 , ntree=501 )  
 RF_acc_sig #Model not signifiant at p = 0.149
-saveRDS(file="RF_acc_sig.rda",RF_acc_sig)
 
 
 
