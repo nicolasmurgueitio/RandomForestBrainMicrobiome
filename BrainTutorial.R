@@ -28,6 +28,7 @@ set.seed(123)
 RF_insula <- randomForest( x=otu_table_scaled_insula[,1:(ncol(otu_table_scaled_insula)-1)] , 
                            y=otu_table_scaled_insula$insula , ntree=501, importance=TRUE, proximities=TRUE )  
 RF_insula #%Var 10.21
+saveRDS( file = "RF_insula.rda" ,RF_insula )
 
 
 #Error plot for # of trees
@@ -45,11 +46,14 @@ insula.r.squared.dist
 #Permutation test (1000) (TAKES A WHILE TO RUN)
 RF_insula_sig <- rf.significance( x=RF_insula ,  xdata=otu_table_scaled_insula[,1:(ncol(otu_table_scaled_insula)-1)] , nperm=1000 , ntree=501 )  
 RF_insula_sig #Model is signigicant at p=0.004 (r2=0.09)
+saveRDS( file = "RF_insula_sig.rda" ,RF_insula_sig )
 
 #Accuracy Estimated by Cross-validation
 fit_control <- trainControl( method = "LOOCV" )  
 RF_insula_loocv <- train( otu_table_scaled_insula[,1:(ncol(otu_table_scaled_insula)-1)] , y=otu_table_scaled_insula[, ncol(otu_table_scaled_insula)] , method="rf", ntree=501 , tuneGrid=data.frame( mtry=104 ) , trControl=fit_control )
 RF_insula_loocv
+saveRDS( file = "RF_insula_loocv.rda" ,RF_insula_loocv )
+
 
 #Identifying important features
 
@@ -72,6 +76,9 @@ RF_insula_2 <- randomForest( x=otu_table_scaled_insula_no_features[,1:(ncol(otu_
                            y=otu_table_scaled_insula_no_features$insula , ntree=501, importance=TRUE, proximities=TRUE )  
 RF_insula_2 #%Var -0.04 (no longer large R2)
 
+saveRDS( file = "RF_insula_2.rda" ,RF_insula_2 )
+
+
 #Error plot for # of trees
 insula_tress_plot<-plot(RF_insula_2)
 insula_tress_plot
@@ -91,6 +98,8 @@ set.seed(123)
 RF_amygdala <- randomForest( x=otu_table_scaled_amygdala[,1:(ncol(otu_table_scaled_amygdala)-1)] , 
                              y=otu_table_scaled_amygdala$amygdala , ntree=501, importance=TRUE, proximities=TRUE )  
 RF_amygdala #%Var -3.14
+saveRDS( file = "RF_amygdala.rda" ,RF_amygdala )
+
 
 #Error plot for # of trees
 amygdala_tress_plot<-plot(RF_amygdala)
@@ -112,6 +121,8 @@ set.seed(123)
 RF_hippocampus <- randomForest( x=otu_table_scaled_hippocampus[,1:(ncol(otu_table_scaled_hippocampus)-1)] , 
                                 y=otu_table_scaled_hippocampus$hippocampus , ntree=501, importance=TRUE, proximities=TRUE )  
 RF_hippocampus #%V -16.4 
+saveRDS( file = "RF_hippocampus.rda" ,RF_hippocampus )
+
 
 #Error plot for # of trees
 hippocampus_tress_plot<-plot(RF_hippocampus)
