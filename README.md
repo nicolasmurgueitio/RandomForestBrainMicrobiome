@@ -12,4 +12,6 @@ Notes Microbiome Brain-Emotional Learning Analyses BEE Study:
   
 3)	Looking at 3 different structural neural volumes related to emotional learning: amygdala, hippocampus, insula
 
+BrainMicrobiome.R contains the code for analyses
+Notes RF Microbiome Brain BEE.Rmd contains notes on analyses
  
