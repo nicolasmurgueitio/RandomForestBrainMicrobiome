@@ -1,11 +1,15 @@
 # RandomForest Brain Microbiome
 
 Notes Microbiome Brain-Emotional Learning Analyses BEE Study:
-1)	Only included rows with full data for both taxononomic data and structural imaging data
+1)	Only included rows with full data for both taxononomic and structural imaging data
+   
    Data comes from  2 week-old infants 
+   
    n=88
-3)	Used the genus-level scaled cell counts (x/10000) processed using Bayesian Reestimation of Abundance with KrakEN:
+   
+2)	Used  genus-level scaled cell counts (x/10000) processed using Bayesian Reestimation of Abundance with KrakEN:
   Whole Genome Shotgun Sequencing with spike-in
-5)	Looking at 3 different structural neural volumes related to emotional learning: amygdala, hippocampus, insula
+  
+3)	Looking at 3 different structural neural volumes related to emotional learning: amygdala, hippocampus, insula
 
  
