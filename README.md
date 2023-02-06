@@ -1,4 +1,4 @@
-# RandomForestTutorial
+# RandomForest Brain Microbiome
 
 Notes Microbiome Brain-Emotional Learning Analyses BEE Study:
 1)	Only included rows with full data for both taxononomic data and structural imaging data
