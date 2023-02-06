@@ -1,5 +1,5 @@
 #set up working directory where the genus and brain data is:
-setwd("~/Library/CloudStorage/Dropbox/RandomForest")
+setwd("")
 
 #FORMAT DATA LIKE IN TUTORIAL
 
