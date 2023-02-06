@@ -1,0 +1,35 @@
+---
+title: "Notes RF Microbiome Brain BEE"
+author: "Nicolas M"
+date: "2/6/2023"
+output: html_document
+---
+
+Notes for Random Forest Regressions Microbiome/Brain BEE
+
+Only using participants with full data (n=88), no missing data across data frames. 
+
+Structural volumes:
+-Bilateral amygdala-> sum of left and right amygdala
+-Bilateral hippocampus-> sum of left and right hippocampus
+-Bilateral insula-> sum of of left and right amygdala
+
+Taxonomic data:
+-Genus level-> absolute abundances
+
+Data preparation:
+-Did not remove taxa with many zeros (eg >20% zeros)
+-# of taxa = 1858
+
+Insula notes:
+-RF had good fit (r2)
+-Model was significant after permutation (1000) test
+-After removing top10 features model no longer had good fit (Veillonella, Enterococcus, Finegoldia, Pseudomonas, Peptacetobacter, Flavobacterium, Acinetobacter, Massilistercora, Lacticaseibacillus, Shewanella)
+
+Amygdala notes:
+-RF did not have good fit (r2)
+
+Hippocampus notes:
+-RF did not have good fit (r2)
+
+

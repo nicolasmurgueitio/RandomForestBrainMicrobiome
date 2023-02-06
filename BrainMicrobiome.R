@@ -1,5 +1,5 @@
 #set up working directory where the genus and brain data is:
-setwd("")
+setwd("~/Dropbox/RandomForest")
 
 library("randomForest")
 library("plyr") 
