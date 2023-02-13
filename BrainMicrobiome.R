@@ -18,6 +18,28 @@ dim(otu_table_brain)
 #explore metadata
 dim(metadata_brain)
 
+#acc model
+otu_table_scaled_acc <- data.frame(t(otu_table_brain))  
+otu_table_scaled_acc$acc <- metadata_brain[rownames(otu_table_scaled_acc), "acc"]  
+
+set.seed(123)
+RF_acc <- randomForest( x=otu_table_scaled_acc[,1:(ncol(otu_table_scaled_acc)-1)] , 
+                           y=otu_table_scaled_acc$acc , ntree=501, importance=TRUE, proximities=TRUE )  
+RF_acc #%Var -6.56
+saveRDS( file = "RF_acc.rda" ,RF_acc )
+
+#Error plot for # of trees
+acc_tress_plot<-plot(RF_acc)
+acc_tress_plot 
+
+#R squared distributions
+rsquared <- data.frame(r.squared = RF_acc$rsq)
+acc.r.squared.dist<-ggplot(rsquared, aes(r.squared)) + 
+  geom_density() +
+  theme_bw()
+acc.r.squared.dist
+
+
 #Insula model
 otu_table_scaled_insula <- data.frame(t(otu_table_brain))  
 otu_table_scaled_insula$insula <- metadata_brain[rownames(otu_table_scaled_insula), "insula"]  
